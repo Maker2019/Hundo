@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Cding Project By Maker Athian</title>
+    <title>Hundred: A Cding Project By Maker Athian</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@
     <!-- === Nav Section ====-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/logo.png" class="d-inline-block align-text-top" width="30" height="24">     APP NAME</a>
+        <a class="navbar-brand" href="#"><img src="img/logo.png" class="d-inline-block align-text-top" width="30" height="24">     MedicalNode.AI</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="app.html">The App</a>
@@ -59,14 +59,70 @@
      <!-- === Main Section ====-->
      <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Code for APP.</h2>
+        <h2 class="border-1 border-bottom border-dark">The Code for Hundred.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hello World
-                        function HelloWorld(){
-                            alert("Hello World");
-                        }
+// Get the values from the input
+// Controller function
+function getValues(){
+    // Get the value from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+    let numbers = [];
+
+    // Parse into integters.
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    if(Number.isInteger(startValue) && Number.isInteger(endValue)){
+        // Call generateNumbers
+        let numbers = generateNumbers(startValue, endValue);
+        // Call displayNumbers
+        displayNumbers(numbers);
+
+    } else{
+        alert("You must enter integers");
+    }
+}
+
+
+// Generate numbers from startValue to the endValue
+// Login function(s)
+function generateNumbers(start_value, end_value) {
+
+    let numbers = [];
+
+    // We want to start all numbers from start to end
+    for(let index = start_value; index <= end_value; index++){
+        // This will execute in a loop until index = value
+        numbers.push(index);
+    }
+    return numbers;
+}
+
+
+// Display the number and mark the even numbers BOLD
+// Display or view functions
+function displayNumbers(numbers){
+
+    let templateRows  = "";
+    for (let index = 0; index < numbers.length; index++) {
+
+        let className = "even";
+        let number = numbers[index];
+        
+        if(number % 2 == 0){
+            className = "even";
+        }else{
+            className = "odd"
+        }
+
+        templateRows += `<tr><td class="${className}">${number}</td></tr>`
+    }
+
+    document.getElementById("results").innerHTML = templateRows;
+}
                     </code>
                     </pre>
                 </div>
